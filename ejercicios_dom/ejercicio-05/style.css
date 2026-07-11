@@ -1,0 +1,142 @@
+/* === VARIABLES Y CONFIGURACIÓN GENERAL === */
+:root {
+    --bg-dark: #0a0a0a;
+    --bg-card: rgba(25, 25, 25, 0.75);
+    --metal-red: #8b0000;
+    --electric-red: #ff3333;
+    --text-light: #eeeeee;
+    --text-muted: #888888;
+}
+
+body {
+    background-color: var(--bg-dark);
+    /* Fondo con un degradado sutil que simula oscuridad */
+    background-image: radial-gradient(circle at center, #1a0505 0%, #0a0a0a 100%);
+    color: var(--text-light);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* === HEADER === */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    border-bottom: 2px solid var(--metal-red);
+}
+
+header h1 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    color: var(--electric-red);
+    text-shadow: 0 0 10px rgba(255, 51, 51, 0.6), 3px 3px 0px #000;
+    margin: 0 0 10px 0;
+}
+
+header .genres {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+}
+
+/* === MAIN & GRID === */
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.albums-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    /*  Rejilla responsiva: se adapta sola si la pantalla es grande o pequeña, es una
+        alternativa moderna que reemplaza escribir varias líneas de código como es el
+        uso de Media Queries. */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /*  Crea automáticamente columnas hasta máximo de 1fr, pero cada tarjeta debe medir
+        como mínimo 220px. */
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* === ESTILO TARJETA === */
+.album-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(5px); /* Transparencia moderna difuminada */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid var(--metal-red); /* Detalle de linea a la izquierda */
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    
+    /* La clave de la animación: le decimos qué propiedades animar y cuánto tardar */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+/* EFECTO HOVER: Cuando el ratón pasa por encima */
+.album-card:hover {
+    transform: translateY(-10px) scale(1.03); /* Se eleva y se agranda un pelín */
+    border-color: var(--electric-red);
+    box-shadow: 0 12px 24px rgba(255, 51, 51, 0.25); /* Sombra roja brillante */
+}
+
+.album-card h3 {
+    margin: 15px 0 0 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.card-icon {
+    font-size: 1.8rem;
+    display: block;
+    color: var(--text-muted);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.album-card:hover .card-icon {
+    color: var(--electric-red);
+    transform: rotate(15deg); /* El rayito girará un poco al hacer hover */
+}
+
+/* === FOOTER === */
+footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #222;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+footer p {
+    margin: 0 0 5px 0;
+}
+
+#album-counter {
+    color: var(--electric-red);
+    font-weight: bold;
+    background: rgba(255, 51, 51, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 51, 51, 0.3);
+}
+
+footer small {
+    font-style: italic;
+}
